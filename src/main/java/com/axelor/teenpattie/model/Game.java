@@ -77,8 +77,8 @@ public class Game {
 	private static boolean checkDouble(Card first, Card second, Card third) {
 		return first.getRank() == second.getRank() || first.getRank() == third.getRank() || second.getRank() == third.getRank();
 	}
-		
-	public CARDS_PAIR getResult() {
+	
+	private void sortCards() {
 		List<Card> myCards = new ArrayList<Card>(this.cards);
 		Collections.sort(myCards, new Comparator<Card>() {
 			@Override
@@ -86,6 +86,11 @@ public class Game {
 				return c1.getRank().getValue() - c2.getRank().getValue();
 			}
 		});
+		return myCards;
+	} 
+		
+	public CARDS_PAIR getResult() {
+		List<Card> myCards = this.sortCards();
 		Card first = myCards.get(0);
 		Card second = myCards.get(1);
 		Card third = myCards.get(2);
@@ -106,12 +111,18 @@ public class Game {
 	}
 	
 	public int getResultTotal() {
-		List<Card> myCards = this.cards;
+		List<Card> myCards = this.sortCards();
+		CARDS_PAIR pairType = this.getResult();
+
 		Card first = myCards.get(0);
 		Card second = myCards.get(1);
-		Card third = myCards.get(2);
-		
-		return first.getDualValue() + second.getDualValue() + third.getDualValue(); 
+		Card third = myCards.get(2);		
+		int addOnTotal = 0;
+
+		if (pairType == CARDS_PAIR.DOUBLE) {
+			addOnTotal = second.getDualValue() * 5000;
+		}
+		return (first.getDualValue() + second.getDualValue() + third.getDualValue()) + addOnTotal; 
 	}
 	
 	public int getTotalPriority() {

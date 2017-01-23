@@ -14,7 +14,7 @@ public class Card {
 	
 	private static void initDuals() {
 		int c = 1;
-		int n = 2;
+		int n = 1;
 		while (c <= RANK.values().length) {
 			rankDualValues[c] = n;
 			c++;
