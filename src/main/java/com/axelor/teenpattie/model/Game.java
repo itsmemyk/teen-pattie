@@ -70,7 +70,7 @@ public class Game {
 	}
 		
 	public CARDS_PAIR getResult() {
-		List<Card> myCards = this.cards;
+		List<Card> myCards = new ArrayList<Card>(this.cards);
 		Collections.sort(myCards, new Comparator<Card>() {
 			@Override
 			public int compare(Card c1, Card c2) {
