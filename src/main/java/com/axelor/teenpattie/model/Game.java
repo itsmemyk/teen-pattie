@@ -69,7 +69,7 @@ public class Game {
 		return first.getRank() == second.getRank() || first.getRank() == third.getRank() || second.getRank() == third.getRank();
 	}
 		
-	public CARDS_PAIR result() {
+	public CARDS_PAIR getResult() {
 		CARDS_PAIR result = CARDS_PAIR.HIGHER_ORDER;
 		List<Card> myCards = this.cards;
 		Collections.sort(myCards, new Comparator<Card>() {
@@ -97,7 +97,7 @@ public class Game {
 		return result;
 	}
 	
-	public int resultTotal() {
+	public int getResultTotal() {
 		List<Card> myCards = this.cards;
 		Card first = myCards.get(0);
 		Card second = myCards.get(1);

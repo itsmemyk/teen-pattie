@@ -84,20 +84,20 @@ public class Table {
 	
 	public void show() {
 		LOGGER.info("Start At" + this.playAt.toLocaleString());
-		Optional<Game> winner = this.games.stream().max(Comparator.comparing((g) -> g.result().getValue() + g.resultTotal()));
+		Optional<Game> winner = this.games.stream().max(Comparator.comparing((g) -> g.getResult().getValue() + g.getResultTotal()));
 		
 		this.games.forEach((game) -> {
 			LOGGER.info("=======================================");
 			LOGGER.info("Player : " + game.getPlayer().getName());
 			LOGGER.info("Game : " + game.getCardsAsString());
-			LOGGER.info("Result : " + game.result().toString());
+			LOGGER.info("Result : " + game.getResult().toString());
 			LOGGER.info("=======================================");
 		});
 		
 		LOGGER.info("***********************************************");
 		LOGGER.info("Winner : " + winner.get().getPlayer().getName());
 		LOGGER.info("Card : " + winner.get().getCardsAsString());
-		LOGGER.info("Result : " + winner.get().result());
+		LOGGER.info("Result : " + winner.get().getResult());
 		LOGGER.info("***********************************************");
 	}
 	
