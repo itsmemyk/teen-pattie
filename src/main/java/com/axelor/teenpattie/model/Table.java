@@ -84,7 +84,7 @@ public class Table {
 	
 	public void show() {
 		LOGGER.info("Start At" + this.playAt.toLocaleString());
-		Optional<Game> winner = this.games.stream().max(Comparator.comparing((g) -> g.getResult().getValue() + g.getResultTotal()));
+		Game winner = Collections.max(this.games, Comparator.comparing(g -> g.getResult().getValue() + g.getResultTotal()));
 		
 		this.games.forEach((game) -> {
 			LOGGER.info("=======================================");
@@ -95,9 +95,9 @@ public class Table {
 		});
 		
 		LOGGER.info("***********************************************");
-		LOGGER.info("Winner : " + winner.get().getPlayer().getName());
-		LOGGER.info("Card : " + winner.get().getCardsAsString());
-		LOGGER.info("Result : " + winner.get().getResult());
+		LOGGER.info("Winner : " + winner.getPlayer().getName());
+		LOGGER.info("Card : " + winner.getCardsAsString());
+		LOGGER.info("Result : " + winner.getResult());
 		LOGGER.info("***********************************************");
 	}
 	
@@ -107,8 +107,7 @@ public class Table {
 		Iterator<Card> cardIterator = cards.iterator();
 		
 		while(cardIterator.hasNext()) {
-			Card card = cardIterator.next();
-			str += card.getSuit().getSymbol() + card.getRank().getIdentity() + " ";
+			str += cardIterator.next().toString() + " ";
 		}
 		
 		LOGGER.info(str);
