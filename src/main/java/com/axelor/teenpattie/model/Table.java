@@ -20,7 +20,6 @@ public class Table {
 	private List<Game> games = new ArrayList<>();
 	private List<Card> cards = new ArrayList<>(52);
 	
-	private static final int TOTAL_CARDS = 52;
 	private static final Logger LOGGER = LoggerFactory.getLogger(Table.class);
 	
 	public Table(List<Card> cards) {
@@ -34,23 +33,6 @@ public class Table {
 	
 	public void setPlayers(List<Player> players) {
 		this.players = players;
-	}
-	
-	public void printCards(List<Card> cards) {
-		LOGGER.info("Total " + cards.size());
-		String str = "";
-		Iterator<Card> cardIterator = cards.iterator();
-		
-		while(cardIterator.hasNext()) {
-			Card card = cardIterator.next();
-			str += card.getSuit().getSymbol() + card.getRank().getIdentity() + " ";
-		}
-		
-		LOGGER.info(str);
-	}
-	
-	public void printCards() {
-		this.printCards(this.cards);
 	}
 	
 	private static int getShuffleValue(int maxSize) {
@@ -117,5 +99,22 @@ public class Table {
 		LOGGER.info("Card : " + winner.get().getCardsAsString());
 		LOGGER.info("Result : " + winner.get().result());
 		LOGGER.info("***********************************************");
+	}
+	
+	public void printCards(List<Card> cards) {
+		LOGGER.info("Total " + cards.size());
+		String str = "";
+		Iterator<Card> cardIterator = cards.iterator();
+		
+		while(cardIterator.hasNext()) {
+			Card card = cardIterator.next();
+			str += card.getSuit().getSymbol() + card.getRank().getIdentity() + " ";
+		}
+		
+		LOGGER.info(str);
+	}
+	
+	public void printCards() {
+		this.printCards(this.cards);
 	}
 }
