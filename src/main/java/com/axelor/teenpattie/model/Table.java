@@ -46,8 +46,12 @@ public class Table {
 		return r.nextInt(maxSize);
 	}
 	
+	private int getShuffleValue() {
+		return this.getShuffleValue(TOTAL_CARDS);
+	}
+	
 	public void shuffle() {
-		int offset = this.getShuffleValue(TOTAL_CARDS);
+		int offset = this.getShuffleValue();
 		List<Card> newCards = new ArrayList<>(TOTAL_CARDS);
 		
 		List<Card> upCards = this.cards.stream().skip(offset).collect(Collectors.toList());
