@@ -70,7 +70,6 @@ public class Game {
 	}
 		
 	public CARDS_PAIR getResult() {
-		CARDS_PAIR result = CARDS_PAIR.HIGHER_ORDER;
 		List<Card> myCards = this.cards;
 		Collections.sort(myCards, new Comparator<Card>() {
 			@Override
@@ -83,18 +82,18 @@ public class Game {
 		Card third = myCards.get(2);
 		
 		if (checkTrio(first, second, third)) {
-			result = CARDS_PAIR.TRIO;
+			return CARDS_PAIR.TRIO;
 		} else if (checkSequence(first, second, third) && checkColour(first, second, third)) {
-			result = CARDS_PAIR.PURE_SEQUENCE;
+			return CARDS_PAIR.PURE_SEQUENCE;
 		} else if (checkSequence(first, second, third)) {
-			result = CARDS_PAIR.SEQUENCE;
+			return CARDS_PAIR.SEQUENCE;
 		} else if (checkColour(first, second, third)) {
-			result = CARDS_PAIR.COLOUR;
+			return CARDS_PAIR.COLOUR;
 		} else if (checkDouble(first, second, third)) {
-			result = CARDS_PAIR.DOUBLE;
+			return CARDS_PAIR.DOUBLE;
 		}
 		
-		return result;
+		return CARDS_PAIR.HIGHER_ORDER;
 	}
 	
 	public int getResultTotal() {
