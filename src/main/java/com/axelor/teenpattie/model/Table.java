@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -35,33 +36,49 @@ public class Table {
 		this.players = players;
 	}
 	
-	public void printCards() {
-		cards.forEach((card) -> {			
-			LOGGER.info(card.getSuit().getSymbol() + card.getRank().getIdentity());
-		});
+	public void printCards(List<Card> cards) {
+		LOGGER.info("Total " + cards.size());
+		String str = "";
+		Iterator<Card> cardIterator = cards.iterator();
+		
+		while(cardIterator.hasNext()) {
+			Card card = cardIterator.next();
+			str += card.getSuit().getSymbol() + card.getRank().getIdentity() + " ";
+		}
+		
+		LOGGER.info(str);
 	}
 	
-	private int getShuffleValue(int maxSize) {
+	public void printCards() {
+		this.printCards(this.cards);
+	}
+	
+	private static int getShuffleValue(int maxSize) {
 		Random r = new Random();
 		return r.nextInt(maxSize);
 	}
 	
-	private int getShuffleValue() {
-		return this.getShuffleValue(TOTAL_CARDS);
+	private static List<Card> shuffleCards(List<Card> cards) {
+		if (cards.size() <= 2) {
+			return cards;
+		}
+		
+		int suffleOffset = getShuffleValue(cards.size());
+		List<Card> newCards = new ArrayList<>(cards.size());
+		
+		// retrieving down to up moved fix cards
+		List<Card> upCards = cards.subList(suffleOffset, cards.size());
+		newCards.addAll(shuffleCards(upCards));
+		
+		// reversing up to down moved fix cards
+		List<Card> downCards = cards.subList(0, suffleOffset);
+		newCards.addAll(downCards);
+		
+		return newCards;
 	}
 	
 	public void shuffle() {
-		int offset = this.getShuffleValue();
-		List<Card> newCards = new ArrayList<>(TOTAL_CARDS);
-		
-		List<Card> upCards = this.cards.stream().skip(offset).collect(Collectors.toList());
-		List<Card> downCards = this.cards.stream().limit(offset).collect(Collectors.toList());
-		Collections.reverse(downCards);		
-		
-		newCards.addAll(upCards);
-		newCards.addAll(downCards);
-		
-		this.cards = newCards;
+		this.cards = shuffleCards(this.cards);
 	}
 	
 	public void shuffle(int times) {
