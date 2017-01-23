@@ -68,13 +68,12 @@ public class Table {
 	
 	public void play() {
 		int totalPlayers = this.players.size();
-		// 0 4 8, 1 5 9
+		
 		for(int i=0; i < totalPlayers; i++) {
 			Player player = this.players.get(i);
 			Card first = this.cards.get(i);
 			Card second = this.cards.get(i+(totalPlayers*1));
 			Card third = this.cards.get(i+(totalPlayers*2));
-			
 			this.games.add(new Game(player, Arrays.asList(first, second, third)));
 		}
 		
@@ -85,7 +84,6 @@ public class Table {
 		Optional<Game> winner = this.games.stream().max(Comparator.comparing((g) -> g.result().getValue() + g.resultTotal()));
 		
 		this.games.forEach((game) -> {
-			int total =  game.result().getValue() + game.resultTotal();
 			LOGGER.info("=======================================");
 			LOGGER.info("Player : " + game.getPlayer().getName());
 			LOGGER.info("Game : " + game.getCardsAsString());
