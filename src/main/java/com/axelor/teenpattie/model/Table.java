@@ -27,6 +27,14 @@ public class Table {
 		this.playAt = new Date();
 	}
 	
+	public List<Player> getPlayers() {
+		return players;
+	}
+	
+	public void setPlayers(List<Player> players) {
+		this.players = players;
+	}
+	
 	public void printCards() {
 		cards.forEach((card) -> {			
 			LOGGER.info(card.getSuit().getSymbol() + card.getRank().getIdentity());
@@ -56,14 +64,6 @@ public class Table {
 		for(int i = 0; i < times; i++) {
 			this.shuffle();
 		}
-	}
-		
-	public List<Player> getPlayers() {
-		return players;
-	}
-
-	public void setPlayers(List<Player> players) {
-		this.players = players;
 	}
 	
 	public void play() {
