@@ -84,7 +84,8 @@ public class Table {
 	
 	public void show() {
 		LOGGER.info("Start At" + this.playAt.toLocaleString());
-		Game winner = Collections.max(this.games, Comparator.comparing(g -> g.getResult().getValue() + g.getResultTotal()));
+		Game winner = Collections.max(this.games, Comparator.comparing(g -> g.getTotalPriority()));
+		winner.setWin(true);
 		
 		this.games.forEach((game) -> {
 			LOGGER.info("=======================================");

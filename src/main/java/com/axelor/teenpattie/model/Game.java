@@ -14,7 +14,8 @@ import com.axelor.teenpattie.Main;
 public class Game {
 	private Player player;
 	private List<Card> cards = new ArrayList<>(3);
-	
+	private boolean isWin = false;
+
 	public Game(Player player) {
 		this.player = player;
 	}
@@ -38,6 +39,14 @@ public class Game {
 
 	public void setCards(List<Card> cards) {
 		this.cards = cards;
+	}
+	
+	public boolean isWin() {
+		return isWin;
+	}
+
+	public void setWin(boolean isWin) {
+		this.isWin = isWin;
 	}
 	
 	public String getCardsAsString() {
@@ -103,5 +112,9 @@ public class Game {
 		Card third = myCards.get(2);
 		
 		return first.getDualValue() + second.getDualValue() + third.getDualValue(); 
+	}
+	
+	public int getTotalPriority() {
+		return this.getResult().getValue() + this.getResultTotal();
 	}
 }
