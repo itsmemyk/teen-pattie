@@ -1,0 +1,46 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+	jcenter()
+}
+
+dependencies {
+	testCompile 'junit:junit:4.12'
+	compile 'org.slf4j:slf4j-api:1.7.22'
+	compile 'org.slf4j:jcl-over-slf4j:1.7.22'
+	compile 'org.slf4j:jul-to-slf4j:1.7.22'
+	compile 'org.slf4j:log4j-over-slf4j:1.7.22'
+	compile 'ch.qos.logback:logback-classic:1.1.8'
+	
+	compile 'org.hibernate:hibernate-core:5.2.6.Final'
+	compile 'org.hibernate:hibernate-validator:5.3.4.Final'
+	compile 'javax.el:javax.el-api:2.2.4'
+	compile 'org.glassfish.web:javax.el:2.2.4'
+	compile 'org.postgresql:postgresql:9.4.1212'
+	
+	testCompile 'com.h2database:h2:1.4.193'
+}
+
+mainClassName = 'com.axelor.teenpattie.Main'
+version = '1.0.0'
+
+jar {
+	manifest {
+		attributes(
+			"Implementation-Title": "Teen Pattie App",
+			"Implementation-Version": version,
+			"Main-Class": mainClassName,
+			"Class-Path": fileTree(dir: "${project.buildDir}/libs/lib", include: "*.jar").collect { "lib/${it.name}" }.join(' '))
+	}
+}
+
+task copyDeps(type: Copy) {
+	from configurations.runtime
+	into "${project.buildDir}/libs/lib"
+}
+
+jar.dependsOn copyDeps
