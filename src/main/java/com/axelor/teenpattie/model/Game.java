@@ -78,7 +78,7 @@ public class Game {
 		return first.getRank() == second.getRank() || first.getRank() == third.getRank() || second.getRank() == third.getRank();
 	}
 	
-	private void sortCards() {
+	private List<Card> sortCards() {
 		List<Card> myCards = new ArrayList<Card>(this.cards);
 		Collections.sort(myCards, new Comparator<Card>() {
 			@Override
