@@ -35,6 +35,10 @@ public class Table {
 		this.players = players;
 	}
 	
+	public void setGames(List<Game> games) {
+		this.games = games;
+	}
+	
 	private static int getShuffleValue(int maxSize) {
 		Random r = new Random();
 		return r.nextInt(maxSize);
@@ -82,11 +86,15 @@ public class Table {
 		
 	}
 	
+	public Game getWinner() {
+		Game winner = Collections.max(this.games, Comparator.comparing(g -> g.getTotalPriority()));
+		winner.setWin(true);		
+		return winner;
+	}
+
 	public void show() {
 		LOGGER.info("Start At" + this.playAt.toLocaleString());
-		Game winner = Collections.max(this.games, Comparator.comparing(g -> g.getTotalPriority()));
-		winner.setWin(true);
-		
+		Game winner = this.getWinner();		
 		this.games.forEach((game) -> {
 			LOGGER.info("=======================================");
 			LOGGER.info("Player : " + game.getPlayer().getName());
@@ -101,6 +109,7 @@ public class Table {
 		LOGGER.info("Result : " + winner.getResult());
 		LOGGER.info("***********************************************");
 	}
+	
 	
 	public void printCards(List<Card> cards) {
 		LOGGER.info("Total " + cards.size());
