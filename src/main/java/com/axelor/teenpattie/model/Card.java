@@ -29,8 +29,12 @@ public class Card {
 		return this.suit.getSymbol() + this.rank.getIdentity();
 	}
 	
+	public int getRankValue() {
+		return this.rank.getValue();
+	}
+	
 	public int getDualValue() {
-		int sqUp = this.rank.getValue() - 2;
+		int sqUp = this.getRankValue() - 2;
 		return (int) Math.pow(2, sqUp);
 	}
 }

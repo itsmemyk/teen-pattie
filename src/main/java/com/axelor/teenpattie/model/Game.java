@@ -67,7 +67,7 @@ public class Game {
 	
 	private static boolean checkSequence(Card first, Card second, Card third) {
 		if (first.getRank() == RANK.TWO && second.getRank() == RANK.THREE && third.getRank() == RANK.Ace) return true;
-		return (first.getRank().getValue() + 1 == second.getRank().getValue()) && (second.getRank().getValue() + 1 == third.getRank().getValue());
+		return (first.getRankValue() + 1 == second.getRankValue()) && (second.getRankValue() + 1 == third.getRankValue());
 	}
 	
 	private static boolean checkColour(Card first, Card second, Card third) {
@@ -83,7 +83,7 @@ public class Game {
 		Collections.sort(myCards, new Comparator<Card>() {
 			@Override
 			public int compare(Card c1, Card c2) {
-				return c1.getRank().getValue() - c2.getRank().getValue();
+				return c1.getRankValue() - c2.getRankValue();
 			}
 		});
 		return myCards;
@@ -120,7 +120,7 @@ public class Game {
 		int addOnTotal = 0;
 
 		if (pairType == CARDS_PAIR.DOUBLE) {
-			addOnTotal = second.getRank().getValue() * 5000;
+			addOnTotal = second.getRankValue() * 5000;
 		}
 		return (first.getDualValue() + second.getDualValue() + third.getDualValue()) + addOnTotal; 
 	}
