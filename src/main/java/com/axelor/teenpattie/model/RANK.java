@@ -1,7 +1,7 @@
 package com.axelor.teenpattie.model;
 
 public enum RANK {
-	Ace(14, "A"),
+	ACE(14, "A"),
     TWO(2, "2"),
     THREE(3, "3"),
     FOUR(4, "4"),

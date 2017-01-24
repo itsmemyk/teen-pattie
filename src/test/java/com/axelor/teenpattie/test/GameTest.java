@@ -33,7 +33,7 @@ public class GameTest {
 	public void checkTrio() {
 		
 		teenPattie.setGames(Arrays.asList(
-			new Game(p1, Arrays.asList(new Card(SUIT.HEART, RANK.Ace), new Card(SUIT.CLUB, RANK.Ace), new Card(SUIT.SPADE, RANK.Ace))),
+			new Game(p1, Arrays.asList(new Card(SUIT.HEART, RANK.ACE), new Card(SUIT.CLUB, RANK.ACE), new Card(SUIT.SPADE, RANK.ACE))),
 			new Game(p2, Arrays.asList(new Card(SUIT.HEART, RANK.KING), new Card(SUIT.CLUB, RANK.KING), new Card(SUIT.SPADE, RANK.KING)))
 		));
 		
@@ -46,7 +46,7 @@ public class GameTest {
 	public void checkSequence() {
 		
 		teenPattie.setGames(Arrays.asList(
-			new Game(p1, Arrays.asList(new Card(SUIT.HEART, RANK.Ace), new Card(SUIT.CLUB, RANK.TWO), new Card(SUIT.SPADE, RANK.THREE))),
+			new Game(p1, Arrays.asList(new Card(SUIT.HEART, RANK.ACE), new Card(SUIT.CLUB, RANK.TWO), new Card(SUIT.SPADE, RANK.THREE))),
 			new Game(p2, Arrays.asList(new Card(SUIT.HEART, RANK.KING), new Card(SUIT.CLUB, RANK.JACK), new Card(SUIT.SPADE, RANK.QUEEN)))
 		));
 		
@@ -59,7 +59,7 @@ public class GameTest {
 	public void checkPureSequence() {
 		
 		teenPattie.setGames(Arrays.asList(
-			new Game(p1, Arrays.asList(new Card(SUIT.HEART, RANK.Ace), new Card(SUIT.CLUB, RANK.TWO), new Card(SUIT.SPADE, RANK.THREE))),
+			new Game(p1, Arrays.asList(new Card(SUIT.HEART, RANK.ACE), new Card(SUIT.CLUB, RANK.TWO), new Card(SUIT.SPADE, RANK.THREE))),
 			new Game(p2, Arrays.asList(new Card(SUIT.HEART, RANK.KING), new Card(SUIT.HEART, RANK.JACK), new Card(SUIT.HEART, RANK.QUEEN)))
 		));
 		
@@ -73,7 +73,7 @@ public class GameTest {
 		
 		teenPattie.setGames(Arrays.asList(
 			new Game(p1, Arrays.asList(new Card(SUIT.HEART, RANK.TWO), new Card(SUIT.HEART, RANK.THREE), new Card(SUIT.HEART, RANK.FIVE))),
-			new Game(p2, Arrays.asList(new Card(SUIT.HEART, RANK.Ace), new Card(SUIT.CLUB, RANK.KING), new Card(SUIT.CLUB, RANK.Ace)))
+			new Game(p2, Arrays.asList(new Card(SUIT.HEART, RANK.ACE), new Card(SUIT.CLUB, RANK.KING), new Card(SUIT.CLUB, RANK.ACE)))
 		));
 		
 		Game winner = teenPattie.getWinner();
@@ -85,7 +85,7 @@ public class GameTest {
 	public void checkDouble() {
 		
 		teenPattie.setGames(Arrays.asList(
-			new Game(p1, Arrays.asList(new Card(SUIT.HEART, RANK.TWO), new Card(SUIT.CLUB, RANK.TWO), new Card(SUIT.SPADE, RANK.Ace))),
+			new Game(p1, Arrays.asList(new Card(SUIT.HEART, RANK.TWO), new Card(SUIT.CLUB, RANK.TWO), new Card(SUIT.SPADE, RANK.ACE))),
 			new Game(p2, Arrays.asList(new Card(SUIT.HEART, RANK.THREE), new Card(SUIT.CLUB, RANK.THREE), new Card(SUIT.SPADE, RANK.FOUR)))
 		));
 		
@@ -98,7 +98,7 @@ public class GameTest {
 	public void checkHigherOrder() {
 		
 		teenPattie.setGames(Arrays.asList(
-			new Game(p1, Arrays.asList(new Card(SUIT.HEART, RANK.TWO), new Card(SUIT.CLUB, RANK.FOUR), new Card(SUIT.SPADE, RANK.Ace))),
+			new Game(p1, Arrays.asList(new Card(SUIT.HEART, RANK.TWO), new Card(SUIT.CLUB, RANK.FOUR), new Card(SUIT.SPADE, RANK.ACE))),
 			new Game(p2, Arrays.asList(new Card(SUIT.HEART, RANK.KING), new Card(SUIT.CLUB, RANK.QUEEN), new Card(SUIT.SPADE, RANK.TEN)))
 		));
 		

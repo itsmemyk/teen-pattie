@@ -66,7 +66,7 @@ public class Game {
 	}
 	
 	private static boolean checkSequence(Card first, Card second, Card third) {
-		if (first.getRank() == RANK.TWO && second.getRank() == RANK.THREE && third.getRank() == RANK.Ace) return true;
+		if (first.getRank() == RANK.TWO && second.getRank() == RANK.THREE && third.getRank() == RANK.ACE) return true;
 		return (first.getRankValue() + 1 == second.getRankValue()) && (second.getRankValue() + 1 == third.getRankValue());
 	}
 	
