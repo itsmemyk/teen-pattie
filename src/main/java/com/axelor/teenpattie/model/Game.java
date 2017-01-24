@@ -120,7 +120,7 @@ public class Game {
 		int addOnTotal = 0;
 
 		if (pairType == CARDS_PAIR.DOUBLE) {
-			addOnTotal = second.getDualValue() * 5000;
+			addOnTotal = second.getRank().getValue() * 5000;
 		}
 		return (first.getDualValue() + second.getDualValue() + third.getDualValue()) + addOnTotal; 
 	}
